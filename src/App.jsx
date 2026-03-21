@@ -177,12 +177,13 @@ export default function Portfolio() {
         <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
 
         <form name="contact" className="max-w-xl mx-auto grid gap-4 text-left"
-          method="POST" netlify
+          method="POST" data-netlify-recaptcha="true" data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
           <input required name="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
           <input required type="email" name="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
           <textarea required name="message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
+          <div data-netlify-recaptcha="true"></div>
           <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">Send message</Button>
           {status === "success" && <p className="text-green-600 text-center mt-2">Message sent successfully!</p>}
           {status === "error" && <p className="text-red-600 text-center mt-2">Failed to send message. Please try again.</p>}
