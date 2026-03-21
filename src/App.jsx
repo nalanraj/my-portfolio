@@ -176,8 +176,8 @@ export default function Portfolio() {
       <section id="contact" className="py-24 px-6 text-center">
         <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
 
-        <form name="contact" onSubmit={handleSubmit} className="max-w-xl mx-auto grid gap-4 text-left"
-          method="POST" data-netlify="true" netlify="true"
+        <form name="contact" className="max-w-xl mx-auto grid gap-4 text-left"
+          method="POST" netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
           <input required name="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
