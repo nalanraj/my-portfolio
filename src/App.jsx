@@ -80,7 +80,7 @@ export default function Portfolio() {
           transition={{ delay: 0.2 }}
           className="mt-6 text-xl text-gray-600 max-w-2xl"
         >
-          Nalan DOURE — QA Leader with 15+ years experience, specializing in scaling quality systems, building automation frameworks, and driving AI-powered engineering excellence.
+          I'm a QA Leader with 15+ years experience, specializing in scaling quality systems, building automation frameworks, and driving AI-powered engineering excellence.
         </motion.p>
 
         <div className="mt-8 flex gap-4">
