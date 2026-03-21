@@ -36,9 +36,13 @@ export default function Portfolio() {
 
       {/* HERO */}
       <section className="h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <p className="mb-4 text-sm text-gray-500 uppercase tracking-wider">
-          Head of QA • QA Manager • Quality Engineering Lead • AI Quality Strategist
-        </p>
+        <div className="flex flex-wrap gap-3">
+          {["Head of QA", "QA Manager", "Quality Engineering Lead", "AI Quality Strategist"].map((skill, i) => (
+            <motion.span key={i} whileHover={{ scale: 1.1 }} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm shadow-sm">
+              {skill}
+            </motion.span>
+          ))}
+        </div>
 
         <motion.h1
           variants={fadeUp}
@@ -144,7 +148,7 @@ export default function Portfolio() {
           <h2 className="text-3xl font-semibold mb-10">Core Expertise</h2>
 
           <div className="flex flex-wrap gap-3">
-            {["Playwright","Cypress","Selenium","AI Strategy","AWS","Python","BDD","Quality Coaching"].map((skill, i) => (
+            {["Playwright", "Cypress", "Selenium", "AI Strategy", "AWS", "Python", "BDD", "Quality Coaching"].map((skill, i) => (
               <motion.span key={i} whileHover={{ scale: 1.1 }} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm shadow-sm">
                 {skill}
               </motion.span>
@@ -157,22 +161,21 @@ export default function Portfolio() {
       <section id="contact" className="py-24 px-6 text-center">
         <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
 
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto grid gap-4 text-left">
-          <input onChange={(e)=>setForm({...form,name:e.target.value})} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
-          <input onChange={(e)=>setForm({...form,email:e.target.value})} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
-          <textarea onChange={(e)=>setForm({...form,message:e.target.value})} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
+        <form name="contact" onSubmit={handleSubmit} className="max-w-xl mx-auto grid gap-4 text-left"
+          method="POST" data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <input onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
+          <input onChange={(e) => setForm({ ...form, email: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
+          <textarea onChange={(e) => setForm({ ...form, message: e.target.value })} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
           <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">Send message</Button>
         </form>
-
-        <p className="mt-6 text-gray-500 text-sm">
-          nalanraj@gmail.com • Île-de-France
-        </p>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-gray-200 py-6 text-center text-sm text-gray-500">
         <p>
-          © {new Date().getFullYear()} Nalan DOURE • 
+          © {new Date().getFullYear()} Nalan DOURE •
           <a href="https://www.linkedin.com/in/nalamaharadjan-doure-97721727/" target="_blank" rel="noopener noreferrer" className="underline ml-1">LinkedIn Profile</a>
         </p>
       </footer>
