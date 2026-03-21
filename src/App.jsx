@@ -6,12 +6,27 @@ import { Button } from "@/components/ui/button";
 
 export default function Portfolio() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = `Contact from ${form.name}`;
-    const body = `${form.message}\n\nFrom: ${form.email}`;
-    window.location.href = `mailto:nalanraj@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...form }),
+    })
+      .then(() => {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(""), 5000);
+      })
+      .catch((error) => setStatus("error"));
   };
 
   const fadeUp = {
@@ -162,13 +177,15 @@ export default function Portfolio() {
         <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
 
         <form name="contact" onSubmit={handleSubmit} className="max-w-xl mx-auto grid gap-4 text-left"
-          method="POST" data-netlify="true" netlify
+          method="POST" data-netlify="true" netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <input onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
-          <input onChange={(e) => setForm({ ...form, email: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
-          <textarea onChange={(e) => setForm({ ...form, message: e.target.value })} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
+          <input required name="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
+          <input required type="email" name="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
+          <textarea required name="message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
           <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">Send message</Button>
+          {status === "success" && <p className="text-green-600 text-center mt-2">Message sent successfully!</p>}
+          {status === "error" && <p className="text-red-600 text-center mt-2">Failed to send message. Please try again.</p>}
         </form>
       </section>
 
