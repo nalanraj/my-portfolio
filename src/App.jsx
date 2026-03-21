@@ -177,7 +177,7 @@ export default function Portfolio() {
         <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
 
         <form name="contact" className="max-w-xl mx-auto grid gap-4 text-left"
-          method="POST" netlify="true"
+          method="POST" netlify
         >
           <input type="hidden" name="form-name" value="contact" />
           <input required name="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
