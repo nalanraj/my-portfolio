@@ -84,8 +84,8 @@ export default function Portfolio() {
         </motion.p>
 
         <div className="mt-8 flex gap-4">
-          <Button className="bg-blue-600 hover:bg-blue-700">Work with me</Button>
-          <Button variant="outline">See my work</Button>
+          <Button className="bg-blue-600 hover:bg-blue-700"><a href="#contact">Work with me</a></Button>
+          <Button variant="outline"><a href="#experience">See my work</a></Button>
         </div>
       </section>
 
