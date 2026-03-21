@@ -40,7 +40,7 @@ export default function Portfolio() {
       {/* HEADER */}
       <header className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur border-b border-gray-200 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="font-semibold">Nalan DOURE</span>
+          <span className="font-semibold">Nalamaharadjan DOURE</span>
           <nav className="flex gap-6 text-sm">
             <a href="#experience" className="text-gray-600 hover:text-blue-600 transition">Experience</a>
             <a href="#skills" className="text-gray-600 hover:text-purple-600 transition">Skills</a>
@@ -172,22 +172,36 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-24 px-6 text-center">
-        <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
+      {/* CONTACT (SIMPLIFIED) */}
+      <section id="contact" className="py-24 px-6 text-center bg-white border-t border-gray-200">
+        <h2 className="text-3xl font-semibold mb-6">Let’s build quality together</h2>
 
-        <form name="contact" className="max-w-xl mx-auto grid gap-4 text-left"
-          method="POST" data-netlify-recaptcha="true" data-netlify="true"
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
         >
-          <input type="hidden" name="form-name" value="contact" />
-          <input required name="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your name" />
-          <input required type="email" name="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="border border-gray-300 p-3 rounded-lg" placeholder="Your email" />
-          <textarea required name="message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border border-gray-300 p-3 rounded-lg" rows={4} placeholder="Your message" />
-          <div data-netlify-recaptcha="true"></div>
-          <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">Send message</Button>
-          {status === "success" && <p className="text-green-600 text-center mt-2">Message sent successfully!</p>}
-          {status === "error" && <p className="text-red-600 text-center mt-2">Failed to send message. Please try again.</p>}
-        </form>
+          Whether you're scaling your engineering team, improving quality practices, or exploring AI-driven QA — I’d love to connect and exchange ideas.
+        </motion.p>
+
+        <div className="flex flex-col items-center gap-4">
+          <a
+            href="mailto:nalanraj@gmail.com"
+            className="text-xl font-semibold text-blue-600 hover:underline"
+          >
+            📩 nalanraj@gmail.com
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/nalamaharadjan-doure-97721727/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-700 hover:text-blue-600 transition"
+          >
+            🔗 Connect with me on LinkedIn
+          </a>
+        </div>
       </section>
 
       {/* FOOTER */}
